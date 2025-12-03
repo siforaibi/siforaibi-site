@@ -172,3 +172,58 @@ h1 {
     h1 { font-size: 2.5rem; }
     .profile-container { width: 200px; height: 200px; }
 }
+/* ========================================= */
+/* 📱 MOBILE COMMAND CENTER (إصلاح الهاتف) 📱 */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* 1. القائمة العلوية (Navigation) */
+    nav {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* ترتيب الروابط عمودياً */
+        width: 100%;
+        background: #fff;
+        border-bottom: 2px solid var(--accent-gold);
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        display: block;
+    }
+
+    /* 2. الواجهة الرئيسية (Hero) */
+    h1 { font-size: 2rem; margin-top: 10px; } /* تصغير العنوان الضخم */
+    .role { font-size: 0.9rem; }
+    
+    .profile-container {
+        width: 160px; height: 160px; /* تصغير الصورة */
+        margin-bottom: 20px;
+    }
+
+    /* 3. صفحة الاتصال (Connect Grid) */
+    .connect-grid {
+        grid-template-columns: 1fr; /* جعل البطاقات تحت بعضها */
+        padding: 20px;
+        gap: 40px;
+    }
+    
+    .connect-header { padding-top: 40px; }
+
+    /* 4. الأزرار */
+    .btn { width: 100%; margin: 10px 0 !important; }
+    
+    /* 5. إخفاء العناصر غير الضرورية */
+    .ticker-wrap { display: none; } /* الشريط المتحرك يسبب مشاكل في الهاتف */
+}

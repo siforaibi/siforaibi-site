@@ -130,10 +130,24 @@
                 <span>📸</span> INSTAGRAM
             </a>
             
-            <a href="sif.oraibi.official@gmail.com" class="social-btn email">
+            <a href="mailto:contact@siforaibi.com" class="social-btn email">
                 <span>📧</span> OFFICIAL EMAIL
             </a>
 
+            <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
+            <h3 style="text-align: left; font-family: 'Space Mono'; font-size: 1rem; margin-bottom: 15px;">OR SEND MESSAGE HERE:</h3>
+            
+            <form action="https://formspree.io/f/meoykppr" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="email" name="email" placeholder="YOUR EMAIL" required 
+                       style="padding: 15px; border: 1px solid #333; background: transparent; font-family: 'Space Mono'; outline: none;">
+                
+                <textarea name="message" rows="4" placeholder="YOUR MESSAGE..." required
+                          style="padding: 15px; border: 1px solid #333; background: transparent; font-family: 'Space Mono'; outline: none;"></textarea>
+                
+                <button type="submit" class="social-btn" style="background: #000; color: #fff; justify-content: center; cursor: pointer; border: none;">
+                    SEND TRANSMISSION
+                </button>
+            </form>
             <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">
                 For general inquiries, press, and speaking engagements.
             </p>
@@ -180,7 +194,7 @@
 
         function unlockPhone() {
             const code = document.getElementById('access-code').value;
-            // كود الدخول (يمكنك تغييره، مثلاً: GENIUS2026)
+            // كود الدخول
             if (code === "GENIUS2026") {
                 document.getElementById('whatsapp-layer').style.display = "flex";
             } else {

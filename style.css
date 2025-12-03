@@ -166,71 +166,75 @@ h1 {
     text-align: center; outline: none; padding: 10px; width: 200px;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    h1 { font-size: 2.5rem; }
-    .profile-container { width: 200px; height: 200px; }
-}
 /* ========================================= */
-/* 📱 MOBILE COMMAND CENTER (الوضع الأفقي المصغر) 📱 */
+/* 📱 MOBILE COMMAND CENTER (إصلاح التداخل النهائي) 📱 */
 /* ========================================= */
 
 @media (max-width: 768px) {
-    /* 1. القائمة العلوية (أفقية ومصغرة) */
+    /* 1. القائمة العلوية */
     nav {
-        flex-direction: column; /* الشعار فوق، الروابط تحته */
+        flex-direction: column;
         padding: 10px 5px;
-        gap: 10px;
+        position: relative; /* لضمان حجز المكان */
+        background: #fff;
+        z-index: 1000;
     }
     
-    .logo {
-        font-size: 1.5rem; /* تصغير الشعار قليلاً */
-        margin-bottom: 5px;
-    }
-
     .nav-links {
         display: flex;
-        flex-direction: row; /* 🔥 عودة للوضع الأفقي */
-        flex-wrap: wrap; /* السماح بالنزول للسطر التالي إذا ضاق المكان */
-        justify-content: center; /* توسيط الروابط */
-        gap: 10px; /* مسافة صغيرة بين الكلمات */
+        flex-direction: row; /* أفقي */
+        flex-wrap: wrap; /* يسمح بالنزول لسطر ثاني */
+        justify-content: center;
+        gap: 8px;
         width: 100%;
-        padding-bottom: 5px;
+        padding-bottom: 15px;
         border-bottom: 1px solid var(--accent-gold);
-        background: transparent; /* إزالة الخلفية البيضاء القوية */
-        margin-bottom: 20px;
+        background: #fff;
+        
+        /* 🔥 هذا هو سر الإصلاح: دفع ما تحته بقوة للأسفل 🔥 */
+        margin-bottom: 50px !important; 
     }
 
     .nav-links a {
-        font-size: 0.7rem; /* 🔥 خط صغير جداً ليناسب الهاتف */
-        padding: 5px 8px;
+        font-size: 0.75rem;
+        padding: 6px 10px;
         margin: 0;
-        border: 1px solid #eee; /* إطار خفيف جداً */
+        border: 1px solid #eee;
         border-radius: 4px;
+        background: #f9f9f9;
     }
 
-    /* 2. إصلاح الصورة (لتظهر بوضوح تحت القائمة) */
-    .hero, .connect-header {
-        padding-top: 10px !important;
-        margin-top: 10px;
+    /* 2. إجبار الصور والنصوص على النزول */
+    .hero, 
+    .connect-header,
+    section {
+        /* إضافة مسافة إجبارية من الأعلى */
+        margin-top: 40px !important; 
+        padding-top: 20px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    /* 3. إصلاح خاص للصور (لكي تبتعد أكثر) */
     .profile-container {
-        width: 140px; height: 140px;
-        margin-bottom: 20px;
+        width: 150px; height: 150px;
+        margin: 20px auto 30px auto !important; /* مسافة إضافية من فوق */
         z-index: 1;
+        position: relative;
     }
 
-    /* 3. النصوص والأزرار */
-    h1 { font-size: 1.6rem; margin-top: 10px; text-align: center; }
-    .role { font-size: 0.8rem; text-align: center; }
+    /* 4. النصوص */
+    h1 { 
+        font-size: 1.8rem; 
+        text-align: center; 
+        margin-top: 20px !important;
+    }
     
-    .btn { width: 100%; margin: 5px 0 !important; }
+    .role, p { text-align: center; padding: 0 10px; }
+    
+    .btn { width: 100%; margin: 8px 0 !important; }
 
-    /* 4. إخفاء الشريط السفلي */
+    /* 5. إخفاء العناصر المزعجة */
     .ticker-wrap { display: none; }
 }

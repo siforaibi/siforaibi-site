@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Legend | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- LEGEND THEME: HISTORY & SAND --- */
+        :root {
+            --page-accent: #c2b280; /* Sand Gold */
+        }
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* TIMELINE CONTAINER */
+        .timeline {
+            max-width: 1000px; /* Increased width for bigger images */
+            margin: 100px auto; padding: 20px;
+            position: relative;
+        }
+        /* Vertical Line */
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+            width: 2px; background: var(--border-light);
+            transform: translateX(-50%);
+        }
+
+        .chapter {
+            margin-bottom: 150px; /* More space between chapters */
+            position: relative; width: 100%;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transform: translateY(50px);
+            transition: 1s all cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .chapter.visible { opacity: 1; transform: translateY(0); }
+
+        /* CONTENT CARD */
+        .chapter-content {
+            width: 40%; background: #fff; padding: 40px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+            position: relative; z-index: 2;
+        }
+        .chapter:nth-child(odd) .chapter-content { margin-right: auto; text-align: right; border-right: 4px solid var(--page-accent); }
+        .chapter:nth-child(even) .chapter-content { margin-left: auto; text-align: left; border-left: 4px solid var(--page-accent); }
+
+        /* --- BIG IMAGES (UPDATED) --- */
+        .chapter-img-container {
+            width: 300px; /* العرض كبير */
+            height: 420px; /* الطول كبير (Portrait) */
+            position: absolute; top: -40px; /* يرتفع قليلاً عن النص */
+            border: 10px solid #fff; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            z-index: 3; transition: 0.6s;
+            overflow: hidden;
+        }
+        
+        /* Positioning: للصورة الفردية يمين، الزوجية يسار */
+        .chapter:nth-child(odd) .chapter-img-container { 
+            right: -80px; /* يخرج عن البطاقة ليعطي شكلاً جمالياً */
+            left: auto;
+        }
+        .chapter:nth-child(even) .chapter-img-container { 
+            left: -80px; 
+            right: auto;
+        }
+        
+        /* Responsive Fix: إذا كانت الشاشة صغيرة */
+        @media (max-width: 900px) {
+            .chapter { flex-direction: column; margin-bottom: 100px; }
+            .timeline::before { left: 20px; }
+            .chapter-content { width: 90%; margin: 0 0 20px 40px !important; text-align: left !important; border: none !important; border-left: 4px solid var(--page-accent) !important; }
+            .chapter-img-container { position: relative; width: 100%; height: 300px; right: auto !important; left: auto !important; top: 0; margin-bottom: 20px; border: none; }
+            .dot { left: 20px; }
+        }
+
+        .chapter-img { width: 100%; height: 100%; object-fit: cover; transition: 0.7s; }
+        .chapter-img:hover { transform: scale(1.1); }
+
+        /* TEXT */
+        .date { font-family: 'Space Mono'; color: var(--page-accent); font-size: 0.9rem; font-weight: bold; display: block; margin-bottom: 15px; }
+        h2 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.1; }
+        p { color: #555; font-size: 1.05rem; line-height: 1.8; }
+
+        /* DOT */
+        .dot {
+            position: absolute; left: 50%; width: 16px; height: 16px;
+            background: #fff; border: 4px solid var(--page-accent); border-radius: 50%;
+            transform: translateX(-50%); box-shadow: 0 0 15px rgba(194, 178, 128, 0.4);
+            z-index: 10;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" class="active" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="hero" style="height: 40vh; min-height: 300px; background: #fff;">
+        <h1 style="font-size: 3.5rem;">THE ORIGIN STORY</h1>
+        <div class="mono" style="color: var(--page-accent); letter-spacing: 2px;">A VISUAL CHRONICLE</div>
+    </div>
+
+    <div class="timeline">
+
+        <div class="chapter reveal">
+            <div class="dot"></div>
+            <div class="chapter-content">
+                <span class="date">NOV 1, 2005 // THE BEGINNING</span>
+                <h2>The Sacred Bloodline</h2>
+                <p>
+                    Born at dawn on Laylat al-Qadr. Carrying the lineage of Ali and Umar as a silent responsibility. A photographic memory that refused to rest, turning a kitchen into a chemistry lab at age twelve.
+                </p>
+            </div>
+            <div class="chapter-img-container">
+                <img src="legend_1.jpeg" alt="Childhood" class="chapter-img">
+            </div>
+        </div>
+
+        <div class="chapter reveal">
+            <div class="dot"></div>
+            <div class="chapter-img-container" style="left: -80px; right: auto;">
+                <img src="legend_2.jpeg" alt="The Void" class="chapter-img">
+            </div>
+            <div class="chapter-content">
+                <span class="date">THE DARK TUNNEL</span>
+                <h2>The Abyss</h2>
+                <p>
+                    A year of isolation in vocational training. The medical dream shattered, but the mind was being forged. In the silence of the void, the pain smelted the iron within him into steel.
+                </p>
+            </div>
+        </div>
+
+        <div class="chapter reveal">
+            <div class="dot"></div>
+            <div class="chapter-content">
+                <span class="date">THE PRESENT</span>
+                <h2>The Architect</h2>
+                <p>
+                    Today, Sif-Eddine stands as the builder. Project Manka is alive in code. The Phantom Protocol is active. He is not a king, but an architect laying the algebraic foundations of a new era.
+                </p>
+            </div>
+            <div class="chapter-img-container">
+                <img src="legend_3.jpeg" alt="The Architect" class="chapter-img">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Transition Logic
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sif-Eddine Oraibi | The Architect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="intro-terminal">
+        <div class="term-text" id="typewriter"></div>
+    </div>
+
+    <div class="transition-overlay"></div>
+
+    <div id="manifesto-overlay" onclick="closeManifesto()">
+        <div class="pulse-ring">
+            <span class="pulse-icon">▶</span>
+        </div>
+        <div class="manifesto-text">LISTENING TO THE ARCHITECT...</div>
+        <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">TAP ANYWHERE TO CLOSE</div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="profile-container">
+            <img src="profile_main.jpeg" alt="Sif-Eddine" class="profile-img">
+        </div>
+        
+        <h1>SIF-EDDINE ORAIBI</h1>
+        <div class="role">POLYMATH | ARCHITECT OF REALITY</div>
+
+        <div style="margin-top: 40px;">
+            <a href="legend.html" class="btn" onclick="transitionTo(event, 'legend.html')">ENTER THE ARCHIVE</a>
+            <button class="btn" onclick="playAudio()" style="margin-left: 20px; border-color: #ddd; color: #666;">
+                ▶ MANIFESTO
+            </button>
+        </div>
+    </section>
+
+    <div class="ticker-wrap">
+        <marquee scrollamount="4">
+            "POVERTY IS A WRONG EQUATION." &nbsp;&nbsp;&nbsp; "MATTER IS TRAPPED LIGHT." &nbsp;&nbsp;&nbsp; "I DO NOT FIGHT WITH MUSCLES; I FIGHT WITH PHYSICS." &nbsp;&nbsp;&nbsp; "ENGINEERING GENIUS IS A PROTOCOL."
+        </marquee>
+    </div>
+
+    <div style="position: fixed; bottom: 20px; right: 20px; width: 10px; height: 10px; cursor: pointer; z-index: 100;" onclick="openVault()"></div>
+
+    <div id="vault-modal" class="modal">
+        <div class="modal-box">
+            <p class="mono" style="margin-bottom: 20px; color: #888;">ENTER ACCESS CODE</p>
+            <input type="password" id="vault-pass" class="modal-input" onkeypress="checkPass(event)">
+            <div id="vault-msg"></div>
+        </div>
+    </div>
+
+    <audio id="audio-manifesto" src="manifesto.mp3"></audio>
+
+    <script>
+        // A. Intro Typewriter
+        const text = "> INITIALIZING ARCHITECT MIND...";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("typewriter").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            } else {
+                setTimeout(() => {
+                    document.getElementById("intro-terminal").style.opacity = "0";
+                    setTimeout(() => { document.getElementById("intro-terminal").style.display = "none"; }, 1000);
+                }, 1000);
+            }
+        }
+
+        // B. Page Transition Logic
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => {
+                window.location.href = url; 
+            }, 800); 
+        }
+
+        // C. Vault Logic
+        function openVault() { 
+            document.getElementById('vault-modal').style.display = 'flex'; 
+            document.getElementById('vault-pass').focus(); 
+        }
+        
+        function checkPass(e) {
+            if(e.key === 'Enter'){
+                if(document.getElementById('vault-pass').value === 'MANKA') {
+                    // يمكنك توجيهه لصفحة مانكا أو رسالة سرية
+                    alert("ACCESS GRANTED: MANKA PROTOCOL ACTIVE");
+                    window.location.href = 'future.html'; 
+                } else {
+                    document.getElementById('vault-msg').innerHTML = "<br><span style='color:red; font-family:monospace'>ACCESS DENIED</span>";
+                }
+            }
+        }
+
+        // D. MANIFESTO AUDIO LOGIC (تم الإصلاح)
+        var audio = document.getElementById("audio-manifesto");
+        var overlay = document.getElementById("manifesto-overlay");
+
+        function playAudio() {
+            overlay.style.display = "flex"; // إظهار الشاشة
+            audio.play(); // تشغيل الصوت
+
+            audio.onended = function() {
+                overlay.style.display = "none"; // إخفاء عند الانتهاء
+            };
+        }
+
+        function closeManifesto() {
+            audio.pause();
+            audio.currentTime = 0;
+            overlay.style.display = "none";
+        }
+
+        // تشغيل الكتابة عند التحميل
+        window.onload = typeWriter;
+    </script>
+
+</body>
+</html>

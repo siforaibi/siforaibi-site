@@ -1,0 +1,174 @@
+/* --- SIF-EDDINE PALACE THEME (ROYAL WHITE & GOLD) --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Mono&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --accent-gold: #d4af37; /* Gold */
+    --accent-orange: #ff4500;
+    --border-light: #e5e5e5;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- INTRO TERMINAL --- */
+#intro-terminal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #fff; z-index: 10000;
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 1s;
+}
+.term-text {
+    font-family: 'Space Mono', monospace; color: var(--accent-gold);
+    font-size: 1.2rem;
+}
+
+/* --- TRANSITION OVERLAY (الستار الأبيض) --- */
+/* تم التعديل: لون أبيض + حركة الستار القديمة */
+.transition-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 0;
+    background: #ffffff; /* أبيض بدلاً من الأسود */
+    z-index: 9999;
+    transition: height 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    bottom: 0;
+    /* إضافة خط ذهبي في الأسفل لتمييز الستار الأبيض عن الخلفية */
+    border-bottom: 4px solid var(--accent-gold); 
+}
+.transition-overlay.active { height: 100%; top: auto; bottom: 0; }
+
+/* --- MANIFESTO VISUALIZER --- */
+#manifesto-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9998; display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+}
+
+.pulse-ring {
+    width: 100px; height: 100px; border-radius: 50%;
+    border: 3px solid var(--accent-gold);
+    position: relative; animation: pulseGold 2s infinite;
+    display: flex; justify-content: center; align-items: center;
+}
+.pulse-icon { font-size: 2rem; color: var(--accent-gold); }
+
+@keyframes pulseGold {
+    0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 30px rgba(212, 175, 55, 0); }
+    100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.manifesto-text {
+    margin-top: 30px; font-family: 'Cinzel', serif; font-size: 1.5rem;
+    color: #000; letter-spacing: 5px; text-transform: uppercase;
+    animation: fadeText 3s infinite alternate;
+}
+@keyframes fadeText { from { opacity: 0.5; } to { opacity: 1; } }
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 30px 50px; position: absolute; top: 0; width: 100%; z-index: 100;
+}
+.logo {
+    font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700;
+    color: #000; text-decoration: none; letter-spacing: 2px;
+}
+.logo span { color: var(--accent-gold); }
+
+.nav-links a {
+    text-decoration: none; color: #666; margin-left: 30px;
+    font-family: 'Space Mono', monospace; font-size: 0.8rem;
+    position: relative; transition: 0.3s;
+}
+.nav-links a:hover, .nav-links a.active { color: #000; }
+.nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 1px;
+    bottom: -5px; left: 0; background: #000; transition: 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    padding: 80px 20px;
+}
+
+/* الدائرة المصححة */
+.profile-container {
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-gold);
+    padding: 5px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+h1 {
+    font-family: 'Cinzel', serif; font-size: 4rem; letter-spacing: 5px;
+    margin-bottom: 10px; color: #111;
+}
+
+.role {
+    font-family: 'Space Mono', monospace; color: var(--accent-gold);
+    letter-spacing: 3px; font-size: 1rem;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block; padding: 15px 40px;
+    border: 1px solid #111; background: transparent;
+    font-family: 'Space Mono'; font-size: 0.9rem; cursor: pointer;
+    text-decoration: none; color: #111; transition: 0.4s;
+}
+.btn:hover { background: #111; color: #fff; }
+
+/* --- TICKER --- */
+.ticker-wrap {
+    position: fixed; bottom: 0; width: 100%; background: #fff;
+    border-top: 1px solid var(--border-light); padding: 15px 0;
+    font-family: 'Space Mono'; font-size: 0.8rem; color: #888;
+}
+
+/* --- MODAL (VAULT) --- */
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.95); /* جعلنا الخلفية بيضاء أيضاً لتناسب الثيم */
+    z-index: 10001;
+    justify-content: center; align-items: center;
+}
+.modal-box {
+    background: #fff; border: 2px solid var(--accent-gold);
+    padding: 50px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+.modal-input {
+    background: transparent; border: none; border-bottom: 1px solid #000;
+    color: #000; font-family: 'Space Mono'; font-size: 1.5rem;
+    text-align: center; outline: none; padding: 10px; width: 200px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    h1 { font-size: 2.5rem; }
+    .profile-container { width: 200px; height: 200px; }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- CONNECT THEME (GREEN & GOLD) --- */
+        :root {
+            --page-accent: #00a884; /* WhatsApp Green */
+            --page-gold: #d4af37;
+        }
+
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* HEADER */
+        .connect-header {
+            text-align: center; padding: 120px 20px 60px;
+            background: #fff;
+        }
+
+        /* SPLIT LAYOUT */
+        .connect-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px; max-width: 1200px; margin: 0 auto; padding: 50px 20px;
+        }
+
+        /* LEFT: PUBLIC CHANNELS */
+        .public-card {
+            background: #fff; padding: 40px; border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft); text-align: center;
+        }
+        .social-btn {
+            display: block; width: 100%; padding: 20px; margin-bottom: 20px;
+            border: 1px solid #333; color: #333; text-decoration: none;
+            font-family: 'Space Mono'; font-weight: bold; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+        }
+        .social-btn:hover { background: #000; color: #fff; transform: translateY(-5px); }
+        .social-btn.twitter:hover { border-color: #1DA1F2; background: #1DA1F2; color: #fff; }
+        .social-btn.insta:hover { border-color: #C13584; background: #C13584; color: #fff; }
+        .social-btn.email:hover { border-color: var(--accent-orange); background: var(--accent-orange); color: #000; }
+
+        /* RIGHT: PRIVATE VAULT */
+        .private-card {
+            background: #0a0a0a; color: #fff; padding: 40px;
+            border: 2px solid var(--page-gold); position: relative;
+            overflow: hidden; text-align: center;
+        }
+        
+        /* القفل */
+        .lock-icon { font-size: 3rem; color: var(--page-gold); margin-bottom: 20px; }
+        
+        /* الخطوات */
+        .steps-list {
+            text-align: left; margin: 30px 0; color: #ccc; font-size: 0.9rem;
+            font-family: 'Inter'; line-height: 1.8;
+        }
+        .steps-list li { margin-bottom: 10px; }
+        .steps-list strong { color: var(--page-gold); }
+
+        /* Input Field */
+        .code-input {
+            background: #111; border: 1px solid var(--page-gold); color: var(--page-gold);
+            padding: 15px; width: 100%; text-align: center; font-family: 'Space Mono';
+            font-size: 1.2rem; margin-bottom: 20px; outline: none;
+        }
+        .unlock-btn {
+            background: var(--page-gold); color: #000; width: 100%; border: none;
+            padding: 15px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .unlock-btn:hover { background: #fff; }
+
+        /* HIDDEN WHATSAPP (REVEALED) */
+        .whatsapp-reveal {
+            display: none; animation: fadeIn 1s;
+            background: #000; height: 100%; width: 100%;
+            position: absolute; top: 0; left: 0; z-index: 10;
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+        .wa-btn {
+            background: #25D366; color: #fff; padding: 20px 40px; border-radius: 50px;
+            font-size: 1.2rem; text-decoration: none; font-weight: bold;
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.4);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .wa-btn:hover { transform: scale(1.1); box-shadow: 0 0 50px rgba(37, 211, 102, 0.6); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" class="active" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="connect-header">
+        <div class="profile-container" style="border-color: #333; margin: 0 auto 30px auto; width: 150px; height: 150px; border-radius: 50%;">
+            <img src="profile.jpeg" alt="Contact" class="profile-img" style="border-radius: 50%;">
+        </div>
+        <h1 style="font-size: 3rem;">CONTACT THE ARCHITECT</h1>
+        <p class="mono" style="color: #666;">CHOOSE YOUR LEVEL OF ACCESS</p>
+    </div>
+
+    <div class="connect-grid">
+        
+        <div class="public-card">
+            <h2 style="font-size: 1.5rem; margin-bottom: 30px;">PUBLIC CHANNELS</h2>
+            
+            <a href="https://x.com/SIF_ORAIBI?s=20" target="_blank" class="social-btn twitter">
+                <span>🐦</span> TWITTER / X
+            </a>
+            
+            <a href="https://www.instagram.com/sif_oraibi?igsh=MW1iMG55ZWY2dWtiNg==" target="_blank" class="social-btn insta">
+                <span>📸</span> INSTAGRAM
+            </a>
+            
+            <a href="sif.oraibi.official@gmail.com" class="social-btn email">
+                <span>📧</span> OFFICIAL EMAIL
+            </a>
+
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">
+                For general inquiries, press, and speaking engagements.
+            </p>
+        </div>
+
+        <div class="private-card" id="private-card">
+            
+            <div id="whatsapp-layer" class="whatsapp-reveal">
+                <h2 style="color: var(--page-gold); margin-bottom: 10px;">ACCESS GRANTED</h2>
+                <p class="mono" style="margin-bottom: 40px;">WELCOME TO THE INNER CIRCLE</p>
+                <a href="https://wa.me/17866050341" target="_blank" class="wa-btn">
+                    <span>💬</span> OPEN WHATSAPP
+                </a>
+            </div>
+
+            <div class="lock-icon">🔒</div>
+            <h2 style="font-size: 1.5rem; color: var(--page-gold);">DIRECT LINE ACCESS</h2>
+            <p class="mono" style="color: #888; font-size: 0.8rem;">RESTRICTED TO BOOK OWNERS</p>
+
+            <ul class="steps-list">
+                <li>1. Buy <strong>"Engineering Genius"</strong> on Amazon.</li>
+                <li>2. Post a photo of the book with <strong>#TheCode</strong>.</li>
+                <li>3. Send the post to me via Instagram DM.</li>
+                <li>4. Receive your <strong>Access Code</strong>.</li>
+            </ul>
+
+            <input type="text" id="access-code" class="code-input" placeholder="ENTER ACCESS CODE">
+            <button class="unlock-btn" onclick="unlockPhone()">UNLOCK NUMBER</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p class="mono">&copy; 2025 Sif-Eddine Oraibi. System Online.</p>
+    </footer>
+
+    <script>
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        function unlockPhone() {
+            const code = document.getElementById('access-code').value;
+            // كود الدخول (يمكنك تغييره، مثلاً: GENIUS2026)
+            if (code === "GENIUS2026") {
+                document.getElementById('whatsapp-layer').style.display = "flex";
+            } else {
+                alert("ACCESS DENIED. INVALID CODE.");
+                document.getElementById('access-code').style.borderColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>

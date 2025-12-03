@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Library | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- LIBRARY THEME (CHARCOAL & GOLD) --- */
+        :root {
+            --page-accent: #333333; /* Charcoal Ink */
+            --page-gold: #d4af37;   /* Gold Leaf */
+        }
+
+        .nav-links a.active { color: var(--page-gold); }
+        .nav-links a.active::after { width: 100%; background: var(--page-gold); }
+
+        /* HEADER */
+        .library-header {
+            text-align: center; padding: 120px 20px 60px;
+            background: #fff;
+        }
+        
+        /* 3D BOOK STAGE (CINEMATIC) */
+        .masterpiece-section {
+            display: flex; align-items: center; justify-content: center;
+            padding: 80px 5%; background: #fafafa;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            perspective: 1500px; /* للعمق الثلاثي الأبعاد */
+            flex-wrap: wrap; gap: 80px;
+        }
+
+        .book-3d-container {
+            width: 320px; height: 500px; position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-25deg) rotateX(10deg); /* زاوية سينمائية */
+            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 50px 50px 100px rgba(0,0,0,0.2);
+        }
+        .book-3d-container:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        .book-cover {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 5px 15px 15px 5px;
+            border-left: 10px solid #111; /* Spine effect */
+        }
+
+        .book-details { max-width: 500px; opacity: 0; transform: translateX(50px); animation: slideIn 1s forwards 0.5s; }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+        .book-title { font-size: 3rem; color: var(--page-accent); line-height: 1.1; margin-bottom: 10px; }
+        .book-subtitle { font-family: 'Space Mono'; color: var(--page-gold); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 30px; }
+        
+        .gold-btn {
+            background: var(--page-gold); color: #fff; border: none; padding: 18px 40px;
+            font-family: 'Space Mono'; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block;
+        }
+        .gold-btn:hover { background: #b59020; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4); }
+
+        /* UPCOMING WORKS (BLUEPRINTS) */
+        .wip-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px; padding: 80px 10%;
+        }
+        .wip-card {
+            border: 1px dashed #ccc; padding: 40px; background: #fff;
+            position: relative; transition: 0.4s;
+        }
+        .wip-card:hover { border-color: var(--page-gold); transform: translateY(-10px); }
+        
+        .status-badge {
+            position: absolute; top: -15px; left: 30px; background: #fff;
+            border: 1px solid var(--page-gold); color: var(--page-gold);
+            padding: 5px 15px; font-family: 'Space Mono'; font-size: 0.75rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" class="active" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="library-header">
+        <div class="profile-container" style="border-color: var(--page-accent); margin: 0 auto 30px auto; width: 200px; height: 260px; border-radius: 0;">
+            <img src="library_profile.jpeg" alt="Author" class="profile-img" style="filter: none;">
+        </div>
+        <h1 style="font-size: 3.5rem; color: var(--page-accent);">THE ROYAL LIBRARY</h1>
+        <p class="mono" style="color: #888;">THE ARCHITECTURE OF KNOWLEDGE</p>
+    </div>
+
+    <div class="masterpiece-section">
+        <div class="book-3d-container">
+            <img src="book_cover.jpeg" alt="Engineering Genius" class="book-cover">
+        </div>
+
+        <div class="book-details">
+            <div class="book-title">ENGINEERING GENIUS</div>
+            <div class="book-subtitle">THE REVERSE ENGINEERING OF GREATNESS</div>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px;">
+                This is not a self-help book. It is a biological, physical, and military roadmap to building Empires. Using algebraic logic to deconstruct the hidden mechanics of power and impose Order upon Chaos.
+            </p>
+            <a href="https://www.amazon.com/dp/B0DJ26Z47V?ref=cm_sw_r_mwn_dp_G3H36598379P779Q7X10&ref_=cm_sw_r_mwn_dp_G3H36598379P779Q7X10&social_share=cm_sw_r_mwn_dp_G3H36598379P779Q7X10&language=en_US&skipSim=1" target="_blank" class="gold-btn">
+                ACQUIRE ON AMAZON
+            </a>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 100px;">
+        <h2 style="color: var(--page-accent); font-size: 2rem;">WORKS IN PROGRESS</h2>
+        <div style="width: 50px; height: 3px; background: var(--page-gold); margin: 20px auto;"></div>
+    </div>
+
+    <div class="wip-grid">
+        
+        <div class="wip-card reveal">
+            <div class="status-badge">VOL 1 OF 14 DRAFTED</div>
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">The Medical Encyclopedia</h3>
+            <p style="color: #666; font-size: 0.95rem;">
+                A monumental 14-Volume series redefining anatomy and pathology. Treating incurable diseases through bio-physics and algebraic biology.
+            </p>
+        </div>
+
+        <div class="wip-card reveal">
+            <div class="status-badge">RESEARCH PHASE</div>
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Football Engineering</h3>
+            <p style="color: #666; font-size: 0.95rem;">
+                The science of the perfect strike. Applying trajectory physics and geometric logic to modern football training regimes.
+            </p>
+        </div>
+
+        <div class="wip-card reveal">
+            <div class="status-badge">COMPILING</div>
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Echoes of The Void</h3>
+            <p style="color: #666; font-size: 0.95rem;">
+                A collection of philosophical poetry. The verses written during the "Year of The Void" and the moments of ascension.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Transition Logic
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

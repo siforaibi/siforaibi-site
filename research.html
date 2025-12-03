@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Archive | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- RESEARCH THEME (ROYAL BLUE) --- */
+        :root {
+            --page-accent: #003366; /* Royal Blue */
+            --page-secondary: #e6f0ff; /* Light Blue bg */
+        }
+
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* HEADER */
+        .research-header {
+            text-align: center; padding: 100px 20px 50px;
+            background: linear-gradient(to bottom, #fff, var(--page-secondary));
+        }
+
+        /* GRID SYSTEM */
+        .archive-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px; padding: 50px 10%;
+        }
+
+        /* DOCUMENT CARD */
+        .doc-card {
+            background: #fff; border: 1px solid var(--border-light);
+            border-top: 4px solid var(--page-accent);
+            padding: 0; transition: 0.4s; position: relative;
+            box-shadow: var(--shadow-soft); overflow: hidden;
+            opacity: 0; transform: translateY(20px);
+        }
+        .doc-card.visible { opacity: 1; transform: translateY(0); }
+        .doc-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,51,102,0.1); }
+
+        .doc-img-box {
+            height: 200px; width: 100%; overflow: hidden; border-bottom: 1px solid #eee;
+        }
+        .doc-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .doc-card:hover .doc-img { transform: scale(1.1); }
+
+        .doc-content { padding: 25px; }
+        .doc-type {
+            font-family: 'Space Mono'; font-size: 0.7rem; color: var(--page-accent);
+            border: 1px solid var(--page-accent); padding: 3px 8px; display: inline-block; margin-bottom: 10px;
+        }
+
+        .doc-btn {
+            display: block; width: 100%; padding: 15px; text-align: center;
+            background: var(--page-accent); color: #fff; text-decoration: none;
+            font-family: 'Space Mono'; font-size: 0.8rem; transition: 0.3s;
+            border: none; cursor: pointer;
+        }
+        .doc-btn:hover { background: #002244; letter-spacing: 2px; }
+
+        /* CLASSIFIED STYLE */
+        .classified-card {
+            border-top-color: #d00; background: repeating-linear-gradient(45deg, #fff, #fff 10px, #f9f9f9 10px, #f9f9f9 20px);
+        }
+        .classified-card .doc-img { filter: blur(5px) grayscale(100%); }
+        .classified-card .doc-type { color: #d00; border-color: #d00; }
+        .classified-btn { background: #333; cursor: not-allowed; }
+        .classified-btn:hover { background: #d00; content: "ACCESS DENIED"; letter-spacing: 0; }
+
+        /* EVIDENCE VAULT */
+        .evidence-section {
+            background: #111; color: #fff; padding: 80px 10%; margin-top: 100px; text-align: center;
+        }
+        .evidence-grid {
+            display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px;
+            justify-content: center;
+        }
+        .evidence-thumb {
+            width: 200px; height: 120px; object-fit: cover; border: 1px solid #333;
+            cursor: pointer; transition: 0.3s; opacity: 0.7;
+        }
+        .evidence-thumb:hover { opacity: 1; border-color: var(--page-accent); transform: scale(1.1); }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" class="active" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="research-header">
+        <div class="profile-container" style="border-color: var(--page-accent); margin: 0 auto 30px auto; width: 180px; height: 180px; border-radius: 50%;">
+            <img src="research_profile.jpeg" alt="Scientist" class="profile-img" style="border-radius: 50%;">
+        </div>
+        <h1 style="font-size: 3rem;">SCIENTIFIC ARCHIVE</h1>
+        <p class="mono" style="color: var(--page-accent);">FULL ACCESS PROTOCOL</p>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 50px; font-size: 1.5rem;">I. PHYSICS (SEMT SERIES)</h2>
+    <div class="archive-grid">
+        
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_semt1.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">PHYSICS</span>
+                <h3>SEMT Vol I: Core Theory</h3>
+                <p>Defining matter as Trapped Light. The foundation.</p>
+            </div>
+            <a href="semt1.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_semt2.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">PHYSICS</span>
+                <h3>SEMT Vol II: Wave Dynamics</h3>
+                <p>Mathematical derivation of wave-particle duality.</p>
+            </div>
+            <a href="semt2.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_semt3.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">PHYSICS</span>
+                <h3>SEMT Vol III: Unification</h3>
+                <p>Integrating gravity and quantum forces.</p>
+            </div>
+            <a href="semt3.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; margin-top: 50px; font-size: 1.5rem;">II. MATHEMATICS & GEOLOGY</h2>
+    <div class="archive-grid">
+        
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_enginis.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">GEOLOGY</span>
+                <h3>Earth Genesis</h3>
+                <p>A new paradigm for planetary formation.</p>
+            </div>
+            <a href="eg.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_math1.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">PURE MATH</span>
+                <h3>The Collatz Solution</h3>
+                <p>Geometric proof of the 3n+1 conjecture.</p>
+            </div>
+            <a href="SC.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_math2.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">PURE MATH</span>
+                <h3>Collatz-Riemann Bridge</h3>
+                <p>Linking chaotic sequences to Zeta zeros.</p>
+            </div>
+            <a href="THN.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+
+        <div class="doc-card reveal">
+            <div class="doc-img-box"><img src="doc_math3.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">COMPUTING</span>
+                <h3>RSA Structural Analysis</h3>
+                <p>Theoretical vulnerabilities in large primes.</p>
+            </div>
+            <a href="rsa.pdf" class="doc-btn" download>DOWNLOAD PDF</a>
+        </div>
+    </div>
+
+
+    <h2 style="text-align: center; margin-top: 50px; font-size: 1.5rem; color: #d00;">III. CLASSIFIED PROTOCOLS</h2>
+    <div class="archive-grid">
+        
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_pnp.jpg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">LEVEL 5 ACCESS</span>
+                <h3>P=NP Proof</h3>
+                <p>Polynomial time solution for SAT using Algebraic Geometry.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_rsa_break.jpg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">CYBER WEAPON</span>
+                <h3>RSA Factoring Engine</h3>
+                <p>Deterministic sieving algorithm for 2048-bit keys.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+         <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc1.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">ALGORITHM</span>
+                <h3>Prime Analysis</h3>
+                <p>Deep structure of prime distribution.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_manaka.jpeg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">AI BLUEPRINT</span>
+                <h3>Project Manka</h3>
+                <p>Sentimental Silicon Life Architecture.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_teleforce.jpg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">TRIAD 1/3</span>
+                <h3>Teleforce</h3>
+                <p>Coherent matter beam generation.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_nemesis.jpg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">TRIAD 2/3</span>
+                <h3>Nemesis</h3>
+                <p>Orbital kinetic guidance system.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+        <div class="doc-card classified-card reveal">
+            <div class="doc-img-box"><img src="doc_aegis.jpg" class="doc-img"></div>
+            <div class="doc-content">
+                <span class="doc-type">TRIAD 3/3</span>
+                <h3>Aegis</h3>
+                <p>Magnetic viscosity defense field.</p>
+            </div>
+            <button class="doc-btn classified-btn">RESTRICTED</button>
+        </div>
+
+    </div>
+
+    <div class="evidence-section">
+        <h2 style="color: #fff; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px;">THE EVIDENCE VAULT</h2>
+        <div class="evidence-grid">
+            <img src="prt.jpeg" class="evidence-thumb" onclick="openLightbox(this)">
+            <img src="prt1.jpeg" class="evidence-thumb" onclick="openLightbox(this)">
+            <img src="prt2.jpeg" class="evidence-thumb" onclick="openLightbox(this)">
+        </div>
+        <p class="mono" style="color: #666; margin-top: 20px;">RAW EXECUTION LOGS</p>
+    </div>
+
+    <div id="lightbox" class="modal" onclick="this.style.display='none'">
+        <img id="lightbox-img" style="max-width: 90%; max-height: 90%; border: 2px solid var(--page-accent);">
+    </div>
+
+    <script>
+        // Transition Logic
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        // Lightbox Logic
+        function openLightbox(img) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = img.src;
+        }
+    </script>
+</body>
+</html>

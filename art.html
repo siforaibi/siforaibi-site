@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Renaissance | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- ART THEME (PURE WHITE & ORANGE) --- */
+        :root {
+            --page-accent: #ff8c00; /* Creative Orange */
+            --glass-card: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* HEADER: THE MAESTRO */
+        .art-header {
+            text-align: center; padding: 120px 20px 60px;
+            background: #fff;
+        }
+
+        /* --- SECTION 1: SYMPHONIES (MUSIC ALBUMS) --- */
+        .music-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px; padding: 50px 10%;
+        }
+
+        .song-card {
+            background: #fff; border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            transition: 0.4s; overflow: hidden; position: relative;
+            border: 1px solid #f0f0f0;
+        }
+        .song-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(255, 140, 0, 0.15); }
+
+        .album-art {
+            width: 100%; height: 280px; object-fit: cover;
+            border-bottom: 1px solid #f0f0f0; transition: 0.5s;
+        }
+        .song-card:hover .album-art { transform: scale(1.05); }
+
+        .song-info { padding: 25px; text-align: center; }
+        .song-title { font-family: 'Cinzel'; font-size: 1.2rem; margin-bottom: 5px; color: #111; }
+        .song-meta { font-family: 'Space Mono'; font-size: 0.7rem; color: var(--page-accent); letter-spacing: 2px; }
+
+        /* Custom Audio Player */
+        audio {
+            width: 100%; margin-top: 15px; height: 30px;
+            filter: grayscale(100%) contrast(1.2); opacity: 0.6; transition: 0.3s;
+        }
+        .song-card:hover audio { filter: none; opacity: 1; }
+
+        /* --- SECTION 2: VISUAL GALLERY (PAINTINGS) --- */
+        .gallery-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 60px; padding: 80px 5%; background: #fafafa;
+        }
+
+        .art-piece {
+            position: relative; margin-bottom: 40px;
+        }
+
+        .frame {
+            position: relative; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border-radius: 2px; /* Sharp edges for canvas feel */
+            transition: 0.5s;
+        }
+        .art-piece:hover .frame { transform: scale(1.02); box-shadow: 0 30px 70px rgba(0,0,0,0.2); }
+
+        .painting { width: 100%; display: block; transition: 0.7s; }
+        
+        .art-details {
+            margin-top: 25px; text-align: left; padding-left: 10px;
+            border-left: 3px solid var(--page-accent);
+        }
+        .art-title { font-size: 1.8rem; font-family: 'Cinzel'; color: #111; }
+        .art-desc { font-family: 'Inter'; color: #666; font-size: 0.95rem; margin-top: 5px; line-height: 1.6; }
+
+        /* SEPARATOR */
+        .section-title {
+            text-align: center; font-size: 2.5rem; margin-top: 80px;
+            position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px;
+            background: var(--page-accent); margin: 15px auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" class="active" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="art-header">
+        <div class="profile-container" style="border-color: var(--page-accent); margin: 0 auto 30px auto; width: 220px; height: 220px; border-radius: 50%;">
+            <img src="maestro.jpeg" alt="The Artist" class="profile-img" style="filter: grayscale(100%);">
+        </div>
+        <h1 style="font-size: 3.5rem;">THE RENAISSANCE</h1>
+        <p class="mono" style="color: var(--page-accent);">SYMPHONIES OF LOGIC & VISUAL POETRY</p>
+    </div>
+
+    <h2 class="section-title">I. SYMPHONIES</h2>
+    <div class="music-grid">
+        
+        <div class="song-card reveal">
+            <img src="song_cover1.jpeg" class="album-art">
+            <div class="song-info">
+                <div class="song-title">Opus 1: The Void</div>
+                <div class="song-meta">DARK AMBIENT // ORCHESTRAL</div>
+                <audio controls src="song1.mp3"></audio>
+            </div>
+        </div>
+
+        <div class="song-card reveal">
+            <img src="song_cover2.jpeg" class="album-art">
+            <div class="song-info">
+                <div class="song-title">Opus 2: Algorithmic Dreams</div>
+                <div class="song-meta">SYNTHWAVE // ELECTRONIC</div>
+                <audio controls src="song2.mp3"></audio>
+            </div>
+        </div>
+
+        <div class="song-card reveal">
+            <img src="song_cover3.jpeg" class="album-art">
+            <div class="song-info">
+                <div class="song-title">Opus 3: Event Horizon</div>
+                <div class="song-meta">CINEMATIC SCORE</div>
+                <audio controls src="song3.mp3"></audio>
+            </div>
+        </div>
+
+         <div class="song-card reveal">
+            <img src="song_cover4.jpeg" class="album-art">
+            <div class="song-info">
+                <div class="song-title">Opus 4: The Awakening</div>
+                <div class="song-meta">PIANO SOLO</div>
+                <audio controls src="song4.mp3"></audio>
+            </div>
+        </div>
+
+        <div  class="song-card reveal">
+            <img src="song_cover5.jpeg" class="album-art">
+            <div class="song-info">
+                <div class="song-title">Opus 5: The Awakening</div>
+                <div class="song-meta">PIANO SOLO</div>
+                <audio controls src="song5.mp3"></audio>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">II. VISUAL CHRONICLES</h2>
+    <div class="gallery-grid">
+        
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art1.jpeg" alt="Ascension" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">The Ascension of Thought</div>
+                <div class="art-desc">
+                    Visualizing the spiritual elevation that accompanies scientific discovery. When the mind grasps the laws of the universe (SEMT), it transcends the material plane.
+                </div>
+            </div>
+        </div>
+
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art2.jpeg" alt="Golden Age" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">The Post-Scarcity Horizon</div>
+                <div class="art-desc">
+                    A glimpse into a future civilization powered by infinite energy. The 'Golden Age' where technology and nature coexist in perfect algebraic harmony.
+                </div>
+            </div>
+        </div>
+
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art3.jpeg" alt="The Void" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">The Void of Creation</div>
+                <div class="art-desc">
+                    Before the breakthrough, there is always the Void. This piece represents the necessary isolation of the architect—standing alone against entropy.
+                </div>
+            </div>
+        </div>
+
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art4.jpeg" alt="Singularity" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">Event Horizon: P=NP</div>
+                <div class="art-desc">
+                    The singularity point where complexity collapses into simplicity. A visual representation of the Algebraic Detector solving the unsolvable.
+                </div>
+            </div>
+        </div>
+
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art5.jpeg" alt="Liberation" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">Liberation of Variables</div>
+                <div class="art-desc">
+                    Breaking the chains of classical physics. Just as birds defy gravity through aerodynamics, the mind defies 'Impossibility' through Algebra.
+                </div>
+            </div>
+        </div>
+
+        <div class="art-piece reveal">
+            <div class="frame">
+                <img src="art6.jpeg" alt="Dawn" class="painting">
+            </div>
+            <div class="art-details">
+                <div class="art-title">The Dawn of Logic</div>
+                <div class="art-desc">
+                    Serenity after the storm. The state of the world after the equations have been balanced. A landscape of pure, unshakeable truth.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Transition Logic
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

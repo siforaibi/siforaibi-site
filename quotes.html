@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- QUOTES THEME (MONOCHROME & GOLD) --- */
+        :root {
+            --page-accent: #d4af37; /* Gold */
+        }
+
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* HEADER */
+        .quotes-header {
+            text-align: center; padding: 120px 20px 60px;
+            background: #fff;
+        }
+
+        /* QUOTE GRID (GALLERY STYLE) */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* شبكة متجاوبة */
+            gap: 40px;
+            padding: 50px 10%;
+            max-width: 1400px; margin: 0 auto;
+        }
+
+        .quote-card {
+            background: #fff;
+            box-shadow: var(--shadow-soft);
+            border-radius: 15px; overflow: hidden;
+            transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; transform: translateY(30px); /* Animation start */
+        }
+        .quote-card.visible { opacity: 1; transform: translateY(0); }
+
+        .quote-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .quote-img {
+            width: 100%; height: auto; display: block;
+            /* يمكنك إضافة فلتر هنا إذا أردت توحيد شكل الصور، مثلاً: */
+            /* filter: grayscale(20%); */ 
+        }
+
+        /* SEPARATOR LINE */
+        .gold-line {
+            width: 60px; height: 3px; background: var(--page-accent);
+            margin: 20px auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </nav>
+
+    <div class="quotes-header">
+        <div class="profile-container" style="border-color: var(--page-accent); margin: 0 auto 30px auto; width: 200px; height: 260px; border-radius: 0;">
+            <img src="profil_quotes.jpeg" alt="Author" class="profile-img" style="filter: none;">
+        </div>
+        <h1 style="font-size: 3.5rem; color: var(--page-accent);">Sayings</h1>
+        <p class="mono" style="color: #888;">Wisdom is not something you are born with, but something you learn.</p>
+    </div>
+
+    <div class="quotes-header">
+        <h1 style="font-size: 3.5rem; color: #111;">THE CONSTITUTION OF MIND</h1>
+        <div class="gold-line"></div>
+        <p class="mono" style="color: #666; letter-spacing: 2px;">PHILOSOPHICAL FRAGMENTS</p>
+    </div>
+
+    <div class="quotes-grid">
+
+        <div class="quote-card reveal">
+            <img src="quote1.jpeg" alt="Quote: Poverty is a wrong equation" class="quote-img">
+        </div>
+
+        <div class="quote-card reveal">
+            <img src="quote2.jpeg" alt="Quote: Matter is trapped light" class="quote-img">
+        </div>
+
+        <div class="quote-card reveal">
+            <img src="quote3.jpeg" alt="Quote: Fight with physics" class="quote-img">
+        </div>
+        
+        <div class="quote-card reveal">
+            <img src="quote4.jpeg" alt="Quote: Engineering Genius" class="quote-img">
+        </div>
+
+    </div>
+
+    <script>
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>

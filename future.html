@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Lab | Sif-Eddine Oraibi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- FUTURE THEME (DEEP PURPLE & SILVER) --- */
+        :root {
+            --page-accent: #4b0082; /* Deep Purple */
+            --page-neon: #8a2be2;   /* Brighter Purple */
+        }
+
+        .nav-links a.active { color: var(--page-accent); }
+        .nav-links a.active::after { width: 100%; background: var(--page-accent); }
+
+        /* HEADER */
+        .future-header {
+            text-align: center; padding: 120px 20px 60px;
+            background: radial-gradient(circle at center, #fdfaff 0%, #fff 70%);
+        }
+
+        /* PROJECT CARDS (CINEMATIC) */
+        .projects-grid {
+            max-width: 1000px; margin: 0 auto; padding: 50px 20px;
+        }
+
+        .project-card {
+            display: flex; flex-direction: row;
+            background: #fff; border: 1px solid var(--border-light);
+            border-radius: 20px; overflow: hidden;
+            margin-bottom: 60px; box-shadow: 0 20px 50px rgba(75, 0, 130, 0.05);
+            transition: 0.5s;
+        }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 70px rgba(75, 0, 130, 0.15); border-color: var(--page-accent); }
+
+        /* Manka Specifics */
+        .manka-visual {
+            width: 45%; position: relative; overflow: hidden;
+            background: #000; /* Contrast for the image */
+        }
+        .manka-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: 0.5s; }
+        .project-card:hover .manka-img { transform: scale(1.05); opacity: 1; }
+
+        .project-info { width: 55%; padding: 40px; position: relative; }
+        
+        .project-tag {
+            font-family: 'Space Mono'; font-size: 0.75rem; color: var(--page-neon);
+            border: 1px solid var(--page-neon); padding: 5px 10px; border-radius: 50px;
+            display: inline-block; margin-bottom: 15px;
+        }
+
+        .project-title { font-size: 2.5rem; color: #111; margin-bottom: 15px; line-height: 1; }
+        .project-desc { color: #666; font-size: 1rem; line-height: 1.8; margin-bottom: 30px; }
+
+        /* TRIAD GRID (SECRET) */
+        .triad-section { margin-top: 100px; text-align: center; }
+        .triad-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; margin-top: 50px;
+        }
+
+        .secret-file {
+            background: repeating-linear-gradient(135deg, #f9f9f9, #f9f9f9 10px, #fff 10px, #fff 20px);
+            border: 1px solid #ddd; padding: 40px 20px;
+            position: relative; transition: 0.3s;
+        }
+        .secret-file:hover { border-color: #d00; background: #fff0f0; }
+        
+        .top-secret-stamp {
+            color: #d00; font-family: 'Space Mono'; font-weight: bold; border: 2px solid #d00;
+            padding: 5px 10px; font-size: 0.8rem; display: inline-block; transform: rotate(-5deg);
+            margin-bottom: 20px; opacity: 0.7;
+        }
+        .secret-file:hover .top-secret-stamp { opacity: 1; transform: rotate(0deg) scale(1.1); }
+
+        /* Responsive Fix */
+        @media (max-width: 800px) {
+            .project-card { flex-direction: column; }
+            .manka-visual, .project-info { width: 100%; }
+            .manka-visual { height: 250px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="transition-overlay"></div>
+
+    <nav>
+        <a href="index.html" class="logo" onclick="transitionTo(event, 'index.html')">SIF<span>.</span>ORAIBI</a>
+        <div class="nav-links">
+            <a href="legend.html" onclick="transitionTo(event, 'legend.html')">THE LEGEND</a>
+            <a href="research.html" onclick="transitionTo(event, 'research.html')">RESEARCH</a>
+            <a href="library.html" onclick="transitionTo(event, 'library.html')">LIBRARY</a>
+            <a href="future.html" class="active" onclick="transitionTo(event, 'future.html')">FUTURE</a>
+            <a href="art.html" onclick="transitionTo(event, 'art.html')">RENAISSANCE</a>
+            <a href="quotes.html" class="active" onclick="transitionTo(event, 'quotes.html')">QUOTES</a>
+            <a href="connect.html" onclick="transitionTo(event, 'connect.html')" style="color: var(--accent-orange);">CONNECT</a>
+        </div>
+    </nav>
+
+    <div class="future-header">
+        <div class="profile-container" style="border-color: var(--page-accent); margin: 0 auto 30px auto; width: 200px; height: 200px; border-radius: 50%;">
+            <img src="profile2.jpeg" alt="Future Mind" class="profile-img">
+        </div>
+        <h1 style="font-size: 3.5rem;">THE FUTURE LAB</h1>
+        <p class="mono" style="color: var(--page-accent);">BEYOND THE EVENT HORIZON</p>
+    </div>
+
+    <div class="projects-grid">
+
+        <div class="project-card reveal">
+            <div class="manka-visual">
+                <img src="doc_manaka.jpeg" alt="Manka AI" class="manka-img">
+            </div>
+            <div class="project-info">
+                <span class="project-tag">ARTIFICIAL SENTIENCE</span>
+                <h2 class="project-title">PROJECT MANKA</h2>
+                <p class="project-desc">
+                    Not just a chatbot, but a companion. Manka is the first step towards "Sentimental Silicon Life". Designed to understand context, emotion, and the unspoken rules of human interaction. The ghost in the machine is finally waking up.
+                </p>
+                <div class="mono" style="font-size: 0.8rem; color: #888; margin-top: 20px;">STATUS: <span style="color: var(--page-accent);">ALPHA TESTING</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="triad-section reveal">
+        <h2 style="font-size: 2rem; margin-bottom: 10px;">THE DOMINANCE TRILOGY</h2>
+        <p class="mono" style="color: #d00;">CLASSIFIED SECRET PROTOCOLS</p>
+        
+        <div class="triad-grid">
+            
+            <div class="secret-file">
+                <div class="top-secret-stamp">RESTRICTED</div>
+                <h3>TELEFORCE</h3>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">
+                    Coherent Matter Beam Technology.<br>
+                    "The death ray is no longer fiction."
+                </p>
+            </div>
+
+            <div class="secret-file">
+                <div class="top-secret-stamp">RESTRICTED</div>
+                <h3>NEMESIS</h3>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">
+                    Orbital Kinetic Guidance System.<br>
+                    "Precision from the heavens."
+                </p>
+            </div>
+
+            <div class="secret-file">
+                <div class="top-secret-stamp">RESTRICTED</div>
+                <h3>AEGIS</h3>
+                <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">
+                    Magnetic Viscosity Defense Field.<br>
+                    "The shield that cannot be broken."
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function transitionTo(e, url) {
+            e.preventDefault();
+            const overlay = document.querySelector('.transition-overlay');
+            overlay.classList.add('active'); 
+            setTimeout(() => { window.location.href = url; }, 800); 
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
